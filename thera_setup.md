@@ -1,6 +1,7 @@
 ### Environment Setup
 ```sh
 /home/shardul.junagade/miniconda3/bin/conda create -n thera python=3.10 -y
+
 source /home/shardul.junagade/miniconda3/bin/activate thera
 ```
 
@@ -28,10 +29,10 @@ watch -n 1 "nvidia-smi | awk '/Processes:/ {flag=1; next} flag'"
 ## Run on a folder of images:
 python run_eval.py --checkpoint thera-rdn-pro.pkl --data-dir path_to_data_parent_folder --eval-sets data_folder_name --save-dir .
 
-export CUDA_VISIBLE_DEVICES=1,2,3
+
+### Using my own script:
+
+export CUDA_VISIBLE_DEVICES=1
 echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
 
-nohup python run_eval.py --checkpoint "thera-rdn-pro.pkl" --data-dir "./data/bihar/train/" --eval-sets images --eval-scales 4 --save-dir "./results/bihar_thera" > test.log 2>&1 &
-
-nohup python run_eval.py --checkpoint "thera-rdn-pro.pkl" --data-dir "./data/bihar/train/images/" --eval-sets images --save-dir "./results/bihar_thera" > test.log 2>&1 &
-
+nohup python batch_super_resolve.py "./data/bihar/test/test_bihar_same_class_count_10_120_1000/images" "./results/bihar_thera_rdn_pro/test/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > test.log 2>&1 &
