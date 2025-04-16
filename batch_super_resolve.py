@@ -55,7 +55,7 @@ def process_folder(input_folder, output_folder, checkpoint, scale=None, size=Non
             logging.warning(f"Skipping non-image file: {file_name}")
             continue
 
-        logging.info(f"Processing {input_path}...")
+        # logging.info(f"Processing {input_path}...")
 
         try:
             # Read and process the image
@@ -77,7 +77,7 @@ def process_folder(input_folder, output_folder, checkpoint, scale=None, size=Non
 
             # Save the output image
             Image.fromarray(np.asarray(out)).save(output_path)
-            logging.info(f"Saved to {output_path}")
+            # logging.info(f"Saved to {output_path}")
         except Exception as e:
             logging.error(f"Failed to process {input_path}: {e}")
 

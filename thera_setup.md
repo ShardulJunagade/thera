@@ -32,7 +32,21 @@ python run_eval.py --checkpoint thera-rdn-pro.pkl --data-dir path_to_data_parent
 
 ### Using my own script:
 
+```
+source /home/shardul.junagade/miniconda3/bin/activate thera
+
 export CUDA_VISIBLE_DEVICES=1
 echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
+python batch_super_resolve.py <IN_DIR> <OUT_DIR> --checkpoint <CHECKPOINT> --scale <SCALE>
 
-nohup python batch_super_resolve.py "./data/bihar/test/test_bihar_same_class_count_10_120_1000/images" "./results/bihar_thera_rdn_pro/test/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > test.log 2>&1 &
+```
+
+nohup python batch_super_resolve.py "./data/bihar_same_class_count_10_120_1000/images/" "./results/bihar_thera_rdn_pro_4x/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > ./runs/run1.log 2>&1 &
+
+nohup python batch_super_resolve.py "./data/test_bihar_same_class_count_10_120_1000/images/" "./results/test_bihar_thera_rdn_pro_4x/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > ./runs/run2.log 2>&1 &
+
+nohup python batch_super_resolve.py "./data/haryana_same_class_count_10_120_1000/images/" "./results/haryana_thera_rdn_pro_4x/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > ./runs/run3.log 2>&1 &
+
+nohup python batch_super_resolve.py "../data/delhi_ncr_small/images/" "./results/delhi_ncr_thera_rdn_pro_4x/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > ./runs/run6.log 2>&1 &
+
+nohup python batch_super_resolve.py "../data/wb_small_airshed/images/" "./results/wb_thera_rdn_pro_4x/" --checkpoint "thera-rdn-pro.pkl" --scale 4 > ./runs/run7.log 2>&1 &
