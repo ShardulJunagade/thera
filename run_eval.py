@@ -113,6 +113,7 @@ def main(args):
 
     for eval_set, data_loader in zip(args.eval_sets, data_loaders):
         for scale in args.eval_scales:
+            print(f'  x{scale}')
             border_crop = scale + 6 if 'DIV2K' in eval_set else scale
             save_dir = (Path(args.save_dir) / ('ours_' + eval_set + '_' + backbone) / str(scale)) \
                 if args.save_dir else None
